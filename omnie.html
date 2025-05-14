@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Mnie - Mikołaj</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="logomf.png" alt="Logo MF">
+      </div>
+      <nav>
+        <div class="hamburger" onclick="toggleMenu()">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <ul>
+          <li><a href="index.html">Strona główna</a></li>
+          <li><a href="lista.html">Lista projektów</a></li>
+          <li><a href="omnie.html">O mnie</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+      </nav>
+      <div class="weather" id="weather">Ładowanie pogody...</div>
+    </header>
+
+    <main>
+        <section class="intro">
+            <h1>O mnie</h1>
+        </section>
+      <section class="about">
+        <div class="about-content">
+          <div class="about-item">
+            <h2>Kim jestem?</h2>
+            <p>Cześć! Jestem Mikołaj, student informatyki na Politechnice. Moją pasją jest programowanie i tworzenie aplikacji webowych. Uwielbiam rozwiązywać problemy i tworzyć coś nowego!</p>
+          </div>
+          <div class="about-item">
+            <h2>Moje umiejętności</h2>
+            <ul>
+              <li>HTML, CSS, JavaScript</li>
+              <li>React, Node.js</li>
+              <li>PHP, MySQL</li>
+              <li>Git, Docker</li>
+            </ul>
+          </div>
+          <div class="about-item">
+            <h2>Moje doświadczenie</h2>
+            <p>Pracowałem nad wieloma projektami indywidualnymi i zespołowymi. Współpracowałem z różnymi klientami, tworząc strony internetowe, aplikacje mobilne i oprogramowanie. Moje projekty można znaleźć w sekcji "Lista projektów".</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © 2025 Mikołaj. Wszelkie prawa zastrzeżone.
+    </footer>
+    <script src="js/menu.js"></script>
+    <script src="js/weather.js"></script>
+  </body>
+</html>

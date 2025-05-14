@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista Projektów - Mikołaj</title>
+  <link rel="stylesheet" href="style.css">
+
+
+
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="logomf.png" alt="Logo MF">
+    </div>
+    <nav>
+      <div class="hamburger" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <ul>
+        <li><a href="index.html">Strona główna</a></li>
+        <li><a href="lista.html">Lista projektów</a></li>
+        <li><a href="omnie.html">O mnie</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+      </ul>
+    </nav>
+    <div class="weather" id="weather">Ładowanie pogody...</div>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h1>Projekty Open Source</h1>
+      <p>Projekty pobrane z JSONPlaceholder: przykładowe dane.</p>
+      
+      <!-- Formularz wyszukiwania, filtrowania i sortowania -->
+      <div class="filter-sort">
+        <input type="text" id="search" placeholder="Szukaj...">
+<select id="filter">
+  <option value="">Filtruj według języka</option>
+  <option value="JavaScript">JavaScript</option>
+  <option value="Python">Python</option>
+  <option value="Java">Java</option>
+</select>
+<select id="sort">
+  <option value="name">Sortuj według nazwy (A-Z)</option>
+  <option value="name-desc">Sortuj według nazwy (Z-A)</option>
+</select>
+
+      </div>
+
+      <!-- Tabela projektów (Desktop) -->
+<table>
+    <thead>
+        <tr>
+            <th>Nazwa</th>
+            <th>Opis</th>
+            <th>Język programowania</th>
+        </tr>
+    </thead>
+    <tbody id="projects-table-body">
+    </tbody>
+</table>
+<div id="projects-container" class="projects-container"></div>
+
+      <!-- Paginacja -->
+      <div class="pagination">
+        <button onclick="changePage(1)">1</button>
+        <button onclick="changePage(2)">2</button>
+        <button onclick="changePage(3)">3</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 Mikołaj. Wszelkie prawa zastrzeżone.
+  </footer>
+<script src="js/storage.js"></script>
+<script src="js/weather.js"></script>
+<script src="js/menu.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/fetchProjects.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    fetchAllProjects();
+
+    document.getElementById('search').addEventListener('input', () => {
+      renderProjects();
+    });
+
+    document.getElementById('filter').addEventListener('change', () => {
+      renderProjects();
+    });
+
+    document.getElementById('sort').addEventListener('change', () => {
+      renderProjects();
+    });
+  });
+  window.addEventListener('resize', () => {
+  renderProjects();
+  });
+</script>
+</body>
+</html>

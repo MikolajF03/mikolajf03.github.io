@@ -1,1 +1,49 @@
-"Hello World" 
+  <!DOCTYPE html>
+  <html lang="pl">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Mikołaj</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="logomf.png" alt="Logo MF">
+      </div>
+      <nav>
+        <div class="hamburger" onclick="toggleMenu()">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <ul>
+          <li><a href="index.html">Strona główna</a></li>
+          <li><a href="lista.html">Lista projektów</a></li>
+          <li><a href="omnie.html">O mnie</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+      </nav>
+      <div class="weather" id="weather">Ładowanie pogody...</div>
+    </header>
+
+    <main>
+      <section class="intro">
+        <h1>Cześć, jestem Mikołaj</h1>
+        <p>Student informatyki na Wydziale Politechnicznym<br>
+          Zapraszam Cię do zapoznania się z moim portfolio.<br>
+          Znajdziesz tutaj informacje o moich projektach, umiejętnościach i doświadczeniu.</p>
+        <a href="lista.html" class="btn">Zobacz moje projekty</a>
+        <p class="contact-info">Masz pytania?<br>
+          Dane kontaktowe znajdziesz w zakładce <a href="kontakt.html">Kontakt</a>.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      © 2025 Mikołaj. Wszelkie prawa zastrzeżone.
+    </footer>
+    <script src="js/weather.js"></script>
+    <script src="js/menu.js"></script>
+  </body>
+  </html>

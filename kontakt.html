@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontakt – Mikołaj</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="logomf.png" alt="Logo MF">
+    </div>
+    <nav>
+      <div class="hamburger" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <ul>
+        <li><a href="index.html">Strona główna</a></li>
+        <li><a href="lista.html">Lista projektów</a></li>
+        <li><a href="omnie.html">O mnie</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+      </ul>
+    </nav>
+    <div class="weather" id="weather">Ładowanie pogody...</div>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h1>Kontakt</h1>
+      <p>Masz pytania lub chcesz nawiązać współpracę?<br>
+        Napisz do mnie!
+      </p>
+    </section>
+
+    <section class="contact-form">
+      <h2 style="text-align: center;">Uzupełnij formularz</h2>
+      <form action="#" method="post" class="form">
+        <div class="form-group">
+          <label for="name">Imię i nazwisko:</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Adres e-mail:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="subject">Tytuł wiadomości:</label>
+          <input type="text" id="subject" name="subject" required>
+        </div>
+        <div class="form-group" style="text-align: center;">
+          <button type="submit" class="btn">Wyślij</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 Mikołaj. Wszelkie prawa zastrzeżone.
+  </footer>
+
+  <script src="js/weather.js"></script>
+  <script src="js/menu.js"></script>
+</body>
+</html>
