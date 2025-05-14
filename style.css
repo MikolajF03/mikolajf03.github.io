@@ -303,9 +303,10 @@ th {
   background-color: rgba(0, 0, 0, 0.3);
   margin: auto;
   margin-top: 40px;
+  margin-bottom: 40px;
   width: 100%;
   max-width: 75%;
-  padding: 30px 20px 20px 20px;
+  padding: 30px 20px 0px 20px;
   
 }
 
@@ -375,6 +376,16 @@ textarea {
 
 /* Mobile Styles */
 @media (max-width: 767px) {
+
+  .weather {
+    min-width: 0px;
+  }
+
+  .contact-form {
+  width: 100%;
+  max-width: 100%;
+  }
+
   table {
     display: none;
   }
@@ -409,6 +420,39 @@ textarea {
   nav a {
     font-size: 1.2em;
   }
+
+  nav ul li {
+    width: 100%;
+  }
+
+  nav ul li a {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  nav ul li a::before {
+    content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease, height 0.4s ease, opacity 0.2s ease;
+  opacity: 1;
+  pointer-events: none;
+  }
+
+  nav ul li a:active::before {
+  width: 200%;
+  height: 500%;
+  opacity: 1;
+}
 
   .logo img {
     max-height: 50px;
