@@ -60,6 +60,7 @@ header {
 
 /* Navigation */
 nav ul {
+  justify-content: center;
   display: flex;
   list-style: none;
   gap: 30px;
@@ -82,6 +83,7 @@ nav ul.active {
 
 /* Pogoda */
 .weather {
+  min-width: 135px;
   font-size: 0.9em;
   display: flex;
   align-items: center;
@@ -190,6 +192,12 @@ th {
   background-color: #005c56;
 }
 
+.pagination button.active {
+  background-color: #00ab92;
+  color: white;
+  font-weight: bold;
+}
+
 /* Stylowanie pola wyszukiwania, filtrowania i sortowania */
 .filter-sort input,
 .filter-sort select {
@@ -293,9 +301,51 @@ th {
 /*Formularz*/
 .contact-form {
   background-color: rgba(0, 0, 0, 0.3);
-  margin: 0 auto;
+  margin: auto;
+  margin-top: 40px;
+  width: 100%;
+  max-width: 75%;
   padding: 30px 20px 20px 20px;
-  text-align: center;
+  
+}
+
+.contact-form h2 {
+  margin-bottom: 20px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.row .form-group {
+  flex: 1;
+  min-width: 200px;
+}
+
+.form-group {
+
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input, textarea {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: vertical;
 }
 
 /* Tablet Styles (768px - 1023px) */
@@ -374,6 +424,14 @@ th {
 
   .btn {
     padding: 8px 18px;
+  }
+
+  .filter-sort input,
+  .filter-sort select {
+    display: block; /* Ustawienie na blokowy, żeby elementy były jeden pod drugim */
+    width: 100%; /* Ustawienie szerokości na 100%, aby wypełniały całą dostępną przestrzeń */
+    box-sizing: border-box; /* Zapewnia, że padding nie wpływa na szerokość */
+    margin: 10px 0; /* Możesz dostosować margines, jeśli potrzeba */
   }
 
   .about-content {

@@ -19,6 +19,11 @@ function renderProjects() {
   }
 
   const perPage = 10;
+  const totalPages = Math.ceil(filtered.length / perPage);
+  if (currentPage > totalPages) {
+    currentPage = 1;
+  }
+
   const start = (currentPage - 1) * perPage;
   const paginated = filtered.slice(start, start + perPage);
 
@@ -67,7 +72,7 @@ function renderPagination(totalItems, perPage) {
   container.innerHTML = '';
 
   for (let i = 1; i <= totalPages; i++) {
-    container.innerHTML += `<button onclick="changePage(${i})" ${i === currentPage ? 'disabled' : ''}>${i}</button>`;
+    container.innerHTML += `<button class="${i === currentPage ? 'active' : ''}" onclick="changePage(${i})">${i}</button>`;
   }
 }
 
