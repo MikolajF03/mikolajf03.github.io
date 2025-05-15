@@ -17,31 +17,31 @@ if (!projectId) {
     .then(project => {
       const language = languageMap[project.id] || 'Nieznany';
       document.getElementById('project-details').innerHTML = `
-        <div class="project-header">
-          <h1 class="project-title">${project.title}</h1>
-          <p class="project-tags"><strong>Język programowania:</strong> ${language}</p>
-        </div>
+  <div class="project-header">
+    <h1 class="project-title">${project.title}</h1>
+    <p class="project-tags"><strong>Język programowania:</strong> ${language}</p>
+  </div>
 
-        <div class="project-panel">
-          <div class="project-description">
-            <h3>Opis:</h3>
-            <p>${project.body.replace(/\n/g, '<br>')}</p>
+  <div class="project-panel">
+    <div class="project-description">
+      <h3>Opis:</h3>
+      <p>${project.body.replace(/\n/g, '<br>')}</p>
 
-            <div class="buttons">
-              <a href="#" class="btn">Kod źródłowy</a>
-              <a href="#" class="btn">Zobacz online</a>
-            </div>
+      <div class="buttons">
+        <a href="#" class="btn">Kod źródłowy</a>
+        <a href="#" class="btn">Zobacz online</a>
+      </div>
+    </div>
 
-            <p class="last-updated">Ostatnia aktualizacja: 12.04.2025</p>
-          </div>
+    <div class="project-media">
+      <h3>Prezentacja graficzna/ film</h3>
+      <div class="media-placeholder"></div>
+      <div class="media-placeholder"></div>
+    </div>
+  </div>
 
-          <div class="project-media">
-            <h3>Prezentacja graficzna/ film</h3>
-            <div class="media-placeholder"></div>
-            <div class="media-placeholder"></div>
-          </div>
-        </div>
-      `;
+  <p class="last-updated">Ostatnia aktualizacja projektu: 12.04.2025</p>
+`;
     })
     .catch(err => showError("Wystąpił błąd: " + err.message));
 }
