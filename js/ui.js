@@ -1,5 +1,9 @@
 let currentPage = 1;
 
+function truncate(text, maxLength = 50) {
+  return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
+}
+
 function renderProjects() {
   const isDesktop = window.innerWidth >= 1024;
   const searchQuery = document.getElementById('search').value.toLowerCase();
@@ -39,8 +43,8 @@ function renderProjects() {
       const lang = languageMap[post.id];
       tableBody.innerHTML += `
         <tr>
-          <td><a href="https://jsonplaceholder.typicode.com/posts/${post.id}" target="_blank">${post.title}</a></td>
-          <td>${post.body || 'Brak opisu'}</td>
+          <td><a href="projekt.html?id=${post.id}">${post.title}</a></td>
+          <td>${truncate(post.body || 'Brak opisu')}</td>
           <td>${lang}</td>
         </tr>
       `;
@@ -52,12 +56,12 @@ function renderProjects() {
     paginated.forEach(post => {
       const lang = languageMap[post.id];
       cardsContainer.innerHTML += `
-        <a class="card" href="https://jsonplaceholder.typicode.com/posts/${post.id}" target="_blank">
+        <a class="card" href="projekt.html?id=${post.id}">
           <div class="card-header">
             <h3>${post.title}</h3>
             <span class="lang">${lang}</span>
           </div>
-          <p>${post.body || 'Brak opisu'}</p>
+          <p>${truncate(post.body || 'Brak opisu')}</p>
         </a>
       `;
     });
