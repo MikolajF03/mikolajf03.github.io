@@ -15,9 +15,8 @@ function fetchAllProjects() {
         }
 
         data.forEach(repo => {
-          // Jeśli nie mamy języka w mapie, przypisz język z repo lub losowy z listy
           if (!languageMap[repo.id]) {
-            languageMap[repo.id] = repo.language || languages[Math.floor(Math.random() * languages.length)];
+            languageMap[repo.id] = repo.language || 'Brak języka';
           }
         });
 
