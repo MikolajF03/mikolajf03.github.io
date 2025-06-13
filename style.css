@@ -466,7 +466,7 @@ textarea {
 }
 
 /* Mobile Styles */
-@media (max-width: 767px) {
+@media (max-width: 768px) {
 
   .weather {
     min-width: 0px;
