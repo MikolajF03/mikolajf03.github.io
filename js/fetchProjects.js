@@ -2,7 +2,7 @@ let allProjects = [];
 
 function fetchAllProjects() {
   let page = 1;
-  const MAX_PROJECTS = 35;
+  const MAX_PROJECTS = 60;
   let fetched = [];
 
   function fetchNext() {

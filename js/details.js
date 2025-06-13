@@ -9,10 +9,16 @@ const languageLogos = {
   'TypeScript': 'https://raw.githubusercontent.com/github/explore/main/topics/typescript/typescript.png',
   'C#': 'https://raw.githubusercontent.com/github/explore/main/topics/csharp/csharp.png',
   'C++': 'https://raw.githubusercontent.com/github/explore/main/topics/cpp/cpp.png',
+  'C': 'https://raw.githubusercontent.com/abrahamcalf/programming-languages-logos/master/src/c/c_48x48.png',
   'Go': 'https://raw.githubusercontent.com/github/explore/main/topics/go/go.png',
   'Ruby': 'https://raw.githubusercontent.com/github/explore/main/topics/ruby/ruby.png',
   'PHP': 'https://raw.githubusercontent.com/github/explore/main/topics/php/php.png',
+  'Swift': 'https://raw.githubusercontent.com/github/explore/main/topics/swift/swift.png',
+  'Kotlin': 'https://raw.githubusercontent.com/github/explore/main/topics/kotlin/kotlin.png',
   'Rust': 'https://raw.githubusercontent.com/github/explore/main/topics/rust/rust.png',
+  'Shell': 'https://raw.githubusercontent.com/github/explore/main/topics/shell/shell.png',
+  'Objective-C': 'https://raw.githubusercontent.com/github/explore/main/topics/objective-c/objective-c.png',
+  'Scala': 'https://raw.githubusercontent.com/github/explore/main/topics/scala/scala.png',
   'Brak języka': 'https://via.placeholder.com/100x100?text=Brak',
 };
 
