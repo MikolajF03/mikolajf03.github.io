@@ -1,5 +1,5 @@
 const params = new URLSearchParams(window.location.search);
-const projectId = params.get('id');
+const projectName = params.get('name');
 const languageMap = JSON.parse(localStorage.getItem('languageMap') || '{}');
 
 const languageLogos = {
@@ -20,8 +20,8 @@ function showError(message) {
   document.getElementById('project-details').innerHTML = `<p style="color:white;">${message}</p>`;
 }
 
-if (!projectId) {
-  showError('Brak ID projektu.');
+if (!projectName) {
+  showError('Brak nazwy projektu.');
 } else {
   fetch(`https://api.github.com/orgs/microsoft/repos?per_page=100`)
     .then(res => {
@@ -29,7 +29,7 @@ if (!projectId) {
       return res.json();
     })
     .then(repos => {
-      const repo = repos.find(r => r.id.toString() === projectId);
+      const repo = repos.find(r => r.name === projectName);
       if (!repo) throw new Error("Nie znaleziono projektu.");
 
       const language = languageMap[repo.id] || repo.language || 'Brak języka';
