@@ -44,7 +44,11 @@ if (!projectName) {
       document.getElementById('project-details').innerHTML = `
         <div class="project-header">
           <h1 class="project-title">${repo.name}</h1>
-          <p class="project-tags"><strong>Język programowania:</strong> ${language}</p>
+          <div class="project-tags">
+            <span class="tag">${language}</span>
+            ${repo.license ? `<span class="tag">${repo.license.spdx_id}</span>` : ''}
+            ${repo.fork ? '<span class="tag">Fork</span>' : '<span class="tag">Oryginalny</span>'}
+          </div>
         </div>
 
         <div class="project-panel">
@@ -61,7 +65,7 @@ if (!projectName) {
           <div class="project-media">
             <h3>Technologia projektu</h3>
             <img src="${logoUrl}" alt="${language}" class="tech-logo" style="max-width: 120px; margin-bottom: 1rem;" />
-            <p>Logo języka: ${language}</p>
+            <p>Język: ${language}</p>
           </div>
         </div>
 
