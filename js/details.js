@@ -9,13 +9,12 @@ const languageLogos = {
   'TypeScript': 'https://raw.githubusercontent.com/github/explore/main/topics/typescript/typescript.png',
   'C#': 'https://raw.githubusercontent.com/github/explore/main/topics/csharp/csharp.png',
   'C++': 'https://raw.githubusercontent.com/github/explore/main/topics/cpp/cpp.png',
-  'C': 'https://raw.githubusercontent.com/abrahamcalf/programming-languages-logos/master/src/c/c_48x48.png',
   'Go': 'https://raw.githubusercontent.com/github/explore/main/topics/go/go.png',
   'Ruby': 'https://raw.githubusercontent.com/github/explore/main/topics/ruby/ruby.png',
   'PHP': 'https://raw.githubusercontent.com/github/explore/main/topics/php/php.png',
+  'Rust': 'https://raw.githubusercontent.com/github/explore/main/topics/rust/rust.png',
   'Swift': 'https://raw.githubusercontent.com/github/explore/main/topics/swift/swift.png',
   'Kotlin': 'https://raw.githubusercontent.com/github/explore/main/topics/kotlin/kotlin.png',
-  'Rust': 'https://raw.githubusercontent.com/github/explore/main/topics/rust/rust.png',
   'Shell': 'https://raw.githubusercontent.com/github/explore/main/topics/shell/shell.png',
   'Objective-C': 'https://raw.githubusercontent.com/github/explore/main/topics/objective-c/objective-c.png',
   'Scala': 'https://raw.githubusercontent.com/github/explore/main/topics/scala/scala.png',
@@ -34,21 +33,29 @@ if (!projectName) {
       if (!res.ok) throw new Error("Nie udało się pobrać danych z GitHub.");
       return res.json();
     })
-    .then(repos => {
-      const repo = repos.find(r => r.name === projectName);
-      if (!repo) throw new Error("Nie znaleziono projektu.");
+    .then(async repos => {
+      const repo = repos.find(r => r.name.toLowerCase() === projectName.toLowerCase());
+      if (!repo) throw new Error("Nie znaleziono projektu o nazwie " + projectName);
 
       const language = languageMap[repo.id] || repo.language || 'Brak języka';
       const logoUrl = languageLogos[language] || 'https://via.placeholder.com/100x100?text=Unknown';
 
+      // Pobierz tematy (topics)
+      const topicRes = await fetch(`https://api.github.com/repos/${repo.owner.login}/${repo.name}/topics`, {
+        headers: { Accept: 'application/vnd.github.mercy-preview+json' }
+      });
+
+      const topicData = await topicRes.json();
+      const topics = topicData.names || [];
+
+      const tagHTML = topics.length
+        ? topics.map(tag => `<span class="tag">${tag}</span>`).join(' ')
+        : '<span class="tag">Brak tagów</span>';
+
       document.getElementById('project-details').innerHTML = `
         <div class="project-header">
           <h1 class="project-title">${repo.name}</h1>
-          <div class="project-tags">
-            <span class="tag">${language}</span>
-            ${repo.license ? `<span class="tag">${repo.license.spdx_id}</span>` : ''}
-            ${repo.fork ? '<span class="tag">Fork</span>' : '<span class="tag">Oryginalny</span>'}
-          </div>
+          <div class="project-tags">${tagHTML}</div>
         </div>
 
         <div class="project-panel">
@@ -65,7 +72,7 @@ if (!projectName) {
           <div class="project-media">
             <h3>Technologia projektu</h3>
             <img src="${logoUrl}" alt="${language}" class="tech-logo" style="max-width: 120px; margin-bottom: 1rem;" />
-            <p>Język: ${language}</p>
+            <p>Logo języka: ${language}</p>
           </div>
         </div>
 
