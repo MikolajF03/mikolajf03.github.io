@@ -1,5 +1,5 @@
 async function fetchWeather() {
-  const city = 'Tarnow';
+  const city = 'Tarnów';
   const url = `https://wttr.in/${city}?format=j1`;
 
   const iconMap = {
