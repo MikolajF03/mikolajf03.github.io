@@ -1,21 +1,26 @@
 let currentPage = 1;
 
+function truncate(text, maxLength = 50) {
+  if (!text) return '';
+  return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
+}
+
 function renderProjects() {
   const isDesktop = window.innerWidth >= 1024;
   const searchQuery = document.getElementById('search').value.toLowerCase();
   const selectedLanguage = document.getElementById('filter').value;
   const sortOption = document.getElementById('sort').value;
 
-  let filtered = allProjects.filter(post => {
-    const title = post.title.toLowerCase();
-    const lang = languageMap[post.id];
+  let filtered = allProjects.filter(repo => {
+    const title = repo.name.toLowerCase();
+    const lang = languageMap[repo.id];
     return title.includes(searchQuery) && (!selectedLanguage || lang === selectedLanguage);
   });
 
   if (sortOption === 'name') {
-    filtered.sort((a, b) => a.title.localeCompare(b.title));
+    filtered.sort((a, b) => a.name.localeCompare(b.name));
   } else if (sortOption === 'name-desc') {
-    filtered.sort((a, b) => b.title.localeCompare(a.title));
+    filtered.sort((a, b) => b.name.localeCompare(a.name));
   }
 
   const perPage = 10;
@@ -35,12 +40,12 @@ function renderProjects() {
     table.style.display = "table";
     cardsContainer.style.display = "none";
     tableBody.innerHTML = '';
-    paginated.forEach(post => {
-      const lang = languageMap[post.id];
+    paginated.forEach(repo => {
+      const lang = languageMap[repo.id] || 'Nieznany';
       tableBody.innerHTML += `
         <tr>
-          <td><a href="https://jsonplaceholder.typicode.com/posts/${post.id}" target="_blank">${post.title}</a></td>
-          <td>${post.body || 'Brak opisu'}</td>
+          <td><a href="projekt.html?name=${encodeURIComponent(repo.name)}">${repo.name}</a></td>
+          <td>${truncate(repo.description || 'Brak opisu')}</td>
           <td>${lang}</td>
         </tr>
       `;
@@ -49,15 +54,15 @@ function renderProjects() {
     table.style.display = "none";
     cardsContainer.style.display = "grid";
     cardsContainer.innerHTML = '';
-    paginated.forEach(post => {
-      const lang = languageMap[post.id];
+    paginated.forEach(repo => {
+      const lang = languageMap[repo.id] || 'Nieznany';
       cardsContainer.innerHTML += `
-        <a class="card" href="https://jsonplaceholder.typicode.com/posts/${post.id}" target="_blank">
+        <a class="card" href="projekt.html?name=${encodeURIComponent(repo.name)}">
           <div class="card-header">
-            <h3>${post.title}</h3>
+            <h3>${repo.name}</h3>
             <span class="lang">${lang}</span>
           </div>
-          <p>${post.body || 'Brak opisu'}</p>
+          <p>${truncate(repo.description || 'Brak opisu')}</p>
         </a>
       `;
     });

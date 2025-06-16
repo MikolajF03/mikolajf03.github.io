@@ -10,39 +10,24 @@
 
 </head>
 <body>
-  <header>
-    <div class="logo">
-      <img src="logomf.png" alt="Logo MF">
-    </div>
-    <nav>
-      <div class="hamburger" onclick="toggleMenu()">
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-      <ul>
-        <li><a href="index.html">Strona główna</a></li>
-        <li><a href="lista.html">Lista projektów</a></li>
-        <li><a href="omnie.html">O mnie</a></li>
-        <li><a href="kontakt.html">Kontakt</a></li>
-      </ul>
-    </nav>
-    <div class="weather" id="weather">Ładowanie pogody...</div>
-  </header>
+  <div id="navbar"></div>
 
   <main>
     <section class="intro">
       <h1>Projekty Open Source</h1>
-      <p>Projekty pobrane z JSONPlaceholder: przykładowe dane.</p>
+      <p>Projekty pobrane z Github Microsoft: przykładowe dane.</p>
       
       <!-- Formularz wyszukiwania, filtrowania i sortowania -->
       <div class="filter-sort">
         <input type="text" id="search" placeholder="Szukaj...">
 <select id="filter">
   <option value="">Filtruj według języka</option>
-  <option value="JavaScript">JavaScript</option>
-  <option value="Python">Python</option>
   <option value="Java">Java</option>
+  <option value="C#">C#</option>
+  <option value="C++">C++</option>
+  <option value="Ruby">Ruby</option>
+  <option value="Shell">Shell</option>
+  <option value="Objective-C">Objective-C</option>
 </select>
 <select id="sort">
   <option value="name">Sortuj według nazwy (A-Z)</option>
@@ -51,7 +36,6 @@
 
       </div>
 
-      <!-- Tabela projektów (Desktop) -->
 <table>
     <thead>
         <tr>
@@ -65,7 +49,6 @@
 </table>
 <div id="projects-container" class="projects-container"></div>
 
-      <!-- Paginacja -->
       <div class="pagination">
         <button onclick="changePage(1)">1</button>
         <button onclick="changePage(2)">2</button>
@@ -74,14 +57,13 @@
     </section>
   </main>
 
-  <footer>
-    © 2025 Mikołaj. Wszelkie prawa zastrzeżone.
-  </footer>
+  <div id="footer"></div>
 <script src="js/storage.js"></script>
 <script src="js/weather.js"></script>
 <script src="js/menu.js"></script>
 <script src="js/ui.js"></script>
 <script src="js/fetchProjects.js"></script>
+<script src="js/inject.js"></script>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {

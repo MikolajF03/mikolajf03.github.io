@@ -7,25 +7,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <div class="logo">
-      <img src="logomf.png" alt="Logo MF">
-    </div>
-    <nav>
-      <div class="hamburger" onclick="toggleMenu()">
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-      <ul>
-        <li><a href="index.html">Strona główna</a></li>
-        <li><a href="lista.html">Lista projektów</a></li>
-        <li><a href="omnie.html">O mnie</a></li>
-        <li><a href="kontakt.html">Kontakt</a></li>
-      </ul>
-    </nav>
-    <div class="weather" id="weather">Ładowanie pogody...</div>
-  </header>
+  <div id="navbar"></div>
 
   <main>
     <section class="intro">
@@ -65,11 +47,10 @@
 </section>
   </main>
 
-  <footer>
-    © 2025 Mikołaj. Wszelkie prawa zastrzeżone.
-  </footer>
+  <div id="footer"></div>
 
   <script src="js/weather.js"></script>
   <script src="js/menu.js"></script>
+  <script src="js/inject.js"></script>
 </body>
 </html>

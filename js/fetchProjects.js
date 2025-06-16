@@ -2,34 +2,35 @@ let allProjects = [];
 
 function fetchAllProjects() {
   let page = 1;
+  const MAX_PROJECTS = 60;
   let fetched = [];
-  const MAX_PROJECTS = 35;
-  let totalFetched = 0;
 
   function fetchNext() {
-    fetch(`https://jsonplaceholder.typicode.com/posts?_page=${page}&_limit=10`)
+    fetch(`https://api.github.com/orgs/microsoft/repos?per_page=30&page=${page}`)
       .then(res => res.json())
       .then(data => {
-        if (!data.length) {
+        if (!Array.isArray(data) || !data.length) {
           finalize();
           return;
         }
 
-        data.forEach(post => {
-          if (!languageMap[post.id]) {
-            languageMap[post.id] = languages[Math.floor(Math.random() * languages.length)];
+        data.forEach(repo => {
+          if (!languageMap[repo.id]) {
+            languageMap[repo.id] = repo.language || 'Brak języka';
           }
         });
 
         fetched = fetched.concat(data);
-        totalFetched += data.length;
 
-        if (totalFetched >= MAX_PROJECTS) {
+        if (fetched.length >= MAX_PROJECTS) {
           finalize();
         } else {
           page++;
           fetchNext();
         }
+      })
+      .catch(() => {
+        finalize();
       });
   }
 
